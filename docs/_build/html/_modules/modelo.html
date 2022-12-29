@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modelo &mdash; documentación de Gym_Fantasticos - 0.0.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Gym_Fantasticos
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista.html">vista module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelo.html">modelo module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Gym_Fantasticos</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Código de módulo</a> &raquo;</li>
+      <li>modelo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para modelo</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># ********************************************************</span>
+<span class="c1">#                  MODELO</span>
+<span class="c1"># ********************************************************</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">SqliteDatabase</span><span class="p">(</span><span class="s2">&quot;elgimnasio.db&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseModel"><a class="viewcode-back" href="../modelo.html#modelo.BaseModel">[documentos]</a><span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">database</span> <span class="o">=</span> <span class="n">db</span></div>
+
+<div class="viewcode-block" id="Altas"><a class="viewcode-back" href="../modelo.html#modelo.Altas">[documentos]</a><span class="k">class</span> <span class="nc">Altas</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">dni</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">unique</span> <span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">apellido</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">venc_cuota</span> <span class="o">=</span> <span class="n">DateField</span><span class="p">()</span>
+    <span class="n">venc_medico</span> <span class="o">=</span> <span class="n">DateField</span><span class="p">()</span></div>
+
+<span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">db</span><span class="o">.</span><span class="n">create_tables</span><span class="p">([</span><span class="n">Altas</span><span class="p">])</span>
+
+<div class="viewcode-block" id="Abmc"><a class="viewcode-back" href="../modelo.html#modelo.Abmc">[documentos]</a><span class="k">class</span> <span class="nc">Abmc</span><span class="p">():</span>
+    <span class="c1">#def__init__(self,): pass</span>
+    
+      
+    <span class="n">borrar</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">activos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">pasivos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ingreso</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">()</span>
+    <span class="n">con</span> <span class="o">=</span> <span class="nb">int</span><span class="p">()</span>
+    
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     ACTUALIZAR TREEVIEW</span>
+<span class="c1">#     :param mitreview: selecciona item de la tabla y actualiza el contenido</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1"># =============================================================================</span>
+
+<div class="viewcode-block" id="Abmc.actualizar_treeview"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.actualizar_treeview">[documentos]</a>    <span class="k">def</span> <span class="nf">actualizar_treeview</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">mitreview</span><span class="p">):</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">mitreview</span><span class="o">.</span><span class="n">get_children</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+            <span class="n">mitreview</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+         
+        <span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">Altas</span><span class="o">.</span><span class="n">select</span><span class="p">():</span>
+           
+            <span class="n">mitreview</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">fila</span><span class="o">.</span><span class="n">dni</span><span class="p">,</span> <span class="n">fila</span><span class="o">.</span><span class="n">apellido</span><span class="p">,</span> <span class="n">fila</span><span class="o">.</span><span class="n">venc_cuota</span><span class="p">,</span> <span class="n">fila</span><span class="o">.</span><span class="n">venc_medico</span><span class="p">))</span></div>
+    
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     &quot;&quot;&quot;CODIGO REGEX&quot;&quot;&quot;</span>
+<span class="c1">#     &quot;&quot;&quot;:param  DNIReg : &#39;\d{7,8}$&#39; solo numéricos</span>
+<span class="c1">#     :param  APELReg : &#39;[A-Z][a-z,á,é,í,ó,ú]&#39; inicial mayúscula resto minúsculas</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1"># =============================================================================</span>
+    
+    <span class="n">DNIReg</span> <span class="o">=</span> <span class="s1">&#39;\d{7,8}$&#39;</span>
+    <span class="n">APELReg</span> <span class="o">=</span> <span class="s1">&#39;[A-Z][a-z,á,é,í,ó,ú]&#39;</span>
+
+
+<div class="viewcode-block" id="Abmc.useRegexDni"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.useRegexDni">[documentos]</a>    <span class="k">def</span> <span class="nf">useRegexDni</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">input</span><span class="p">):</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DNIReg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Abmc.useRegexApellido"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.useRegexApellido">[documentos]</a>    <span class="k">def</span> <span class="nf">useRegexApellido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">input</span><span class="p">):</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APELReg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+  
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     &quot;&quot;&quot; AGREGAR LINEA&quot;&quot;&quot;</span>
+<span class="c1">#     &quot;&quot;&quot;:param alta_apellido: ingresa apellido&quot;&quot;&quot;</span>
+<span class="c1">#     &quot;&quot;&quot;:param alta_dni: ingresa DNI&quot;&quot;&quot;</span>
+<span class="c1">#     &quot;&quot;&quot;:param cal1: selecciona la fecha de venc cuota&quot;&quot;&quot;</span>
+<span class="c1">#     &quot;&quot;&quot;:param cal2: selecciona la fecha de venc médico&quot;&quot;&quot;</span>
+<span class="c1">#     &quot;&quot;&quot;:param tree: actualiza treeview&quot;&quot;&quot;</span>
+<span class="c1"># =============================================================================</span>
+    
+<div class="viewcode-block" id="Abmc.agregar_linea_regex"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.agregar_linea_regex">[documentos]</a>    <span class="k">def</span> <span class="nf">agregar_linea_regex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">alta_apellido</span><span class="p">,</span><span class="n">alta_dni</span><span class="p">,</span><span class="n">cal1</span><span class="p">,</span> <span class="n">cal2</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">useRegexDni</span><span class="p">(</span><span class="n">alta_dni</span><span class="o">.</span><span class="n">get</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">useRegexApellido</span><span class="p">(</span><span class="n">alta_apellido</span><span class="o">.</span><span class="n">get</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">useRegexDni</span><span class="p">(</span><span class="n">alta_dni</span><span class="o">.</span><span class="n">get</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DNI mal cargado, intente nuevamente&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">useRegexApellido</span><span class="p">(</span><span class="n">alta_apellido</span><span class="o">.</span><span class="n">get</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Apellido mal cargado, intente nuevamente&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agregar_linea</span><span class="p">(</span><span class="n">alta_apellido</span><span class="p">,</span><span class="n">alta_dni</span><span class="p">,</span><span class="n">cal1</span><span class="p">,</span> <span class="n">cal2</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Abmc.agregar_linea"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.agregar_linea">[documentos]</a>    <span class="k">def</span> <span class="nf">agregar_linea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">alta_apellido</span><span class="p">,</span><span class="n">alta_dni</span><span class="p">,</span><span class="n">cal1</span><span class="p">,</span> <span class="n">cal2</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+        
+        <span class="n">altas</span> <span class="o">=</span> <span class="n">Altas</span><span class="p">()</span>
+        <span class="n">altas</span><span class="o">.</span><span class="n">apellido</span> <span class="o">=</span> <span class="n">alta_apellido</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">altas</span><span class="o">.</span><span class="n">dni</span> <span class="o">=</span> <span class="n">alta_dni</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">altas</span><span class="o">.</span><span class="n">venc_cuota</span> <span class="o">=</span> <span class="n">cal1</span><span class="o">.</span><span class="n">selection_get</span><span class="p">()</span>
+        <span class="n">altas</span><span class="o">.</span><span class="n">venc_medico</span> <span class="o">=</span> <span class="n">cal2</span><span class="o">.</span><span class="n">selection_get</span><span class="p">()</span>
+        <span class="n">altas</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualizar_treeview</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+        <span class="k">return</span></div>
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     CHECK SOCIOS</span>
+<span class="c1">#     </span>
+<span class="c1">#     :param buen_dia: ingresa DNI para entrar al gimnasio, verifica si el socio está en base, y si tiene cuota y médico al dia</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1"># =============================================================================</span>
+<div class="viewcode-block" id="Abmc.check_socio_regex"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.check_socio_regex">[documentos]</a>    <span class="k">def</span> <span class="nf">check_socio_regex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">buen_dia</span><span class="p">):</span>
+    
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">useRegexDni</span><span class="p">(</span><span class="n">buen_dia</span><span class="o">.</span><span class="n">get</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DNI mal cargado, intente nuevamente&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_socio</span><span class="p">(</span><span class="n">buen_dia</span><span class="p">)</span></div>
+    
+
+
+<div class="viewcode-block" id="Abmc.check_socio"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.check_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">check_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buen_dia</span><span class="p">):</span>
+        
+        <span class="n">ingreso</span> <span class="o">=</span> <span class="n">Altas</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Altas</span><span class="o">.</span><span class="n">dni</span> <span class="o">==</span> <span class="n">buen_dia</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+        
+        <span class="n">y</span><span class="o">=</span><span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ingreso</span><span class="p">:</span>
+
+            
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">venc_cuota</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">venc_medico</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">apellido</span><span class="o">+</span><span class="s2">&quot; bienvenido!&quot;</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">venc_cuota</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">apellido</span><span class="o">+</span><span class="s2">&quot; actualizar cuota&quot;</span><span class="p">)</span>
+                    
+                <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">venc_medico</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">apellido</span><span class="o">+</span><span class="s2">&quot; actualizar apto médico&quot;</span><span class="p">)</span>
+            <span class="n">y</span><span class="o">=</span><span class="mi">1</span>
+              
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DNI no presente en base de datos&quot;</span><span class="p">)</span>
+       
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="Abmc.seleccionar_elemento"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.seleccionar_elemento">[documentos]</a>    <span class="k">def</span> <span class="nf">seleccionar_elemento</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">treview</span><span class="p">,</span><span class="n">e1</span><span class="p">,</span><span class="n">e2</span><span class="p">):</span>
+        <span class="n">curItem</span> <span class="o">=</span> <span class="n">treview</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">treview</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">curItem</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">e1</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">)</span>
+        <span class="n">e2</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">)</span>
+        <span class="n">e1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">e2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **BORRAR LINEA**</span>
+<span class="sd">    </span>
+<span class="sd">    :param tree: borra la linea seleccionada en treeview</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    
+<div class="viewcode-block" id="Abmc.borrar_linea"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.borrar_linea">[documentos]</a>    <span class="k">def</span> <span class="nf">borrar_linea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tree</span><span class="p">):</span>
+        <span class="n">curItem</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">curItem</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">borrar</span><span class="o">=</span><span class="n">Altas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Altas</span><span class="o">.</span><span class="n">dni</span><span class="o">==</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">borrar</span><span class="o">.</span><span class="n">delete_instance</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualizar_treeview</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+             
+        <span class="k">return</span></div>
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     MODIFICAR CUOTA o MEDICO</span>
+<span class="c1">#     </span>
+<span class="c1">#     :param tree: selecciona item para modificar fecha de vencimiento médico o cuota</span>
+<span class="c1">#     </span>
+<span class="c1">#     :param cal1: vencimiento médico para modificar - de ser preciso</span>
+<span class="c1">#     </span>
+<span class="c1">#     :param cal2: vencimiento cuota a modificar - de ser preciso</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1"># =============================================================================</span>
+
+    <span class="c1"># MODIFICAR ELEMENTO **************</span>
+
+<div class="viewcode-block" id="Abmc.modificar_elemento"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.modificar_elemento">[documentos]</a>    <span class="k">def</span> <span class="nf">modificar_elemento</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">alta_apellido</span><span class="p">,</span><span class="n">alta_dni</span><span class="p">,</span><span class="n">cal1</span><span class="p">,</span> <span class="n">cal2</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">borrar_linea</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_linea_regex</span><span class="p">(</span><span class="n">alta_apellido</span><span class="p">,</span><span class="n">alta_dni</span><span class="p">,</span><span class="n">cal1</span><span class="p">,</span> <span class="n">cal2</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span></div>
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     **LISTAR ACTIVOS vs PASIVOS**</span>
+<span class="c1">#     </span>
+<span class="c1">#     :param activos: lista de miembros que tienen cuota y médico al día</span>
+<span class="c1">#     </span>
+<span class="c1">#     :param pasivos: lista de miembros que tienen cuota y/o médico vencidos</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1"># =============================================================================</span>
+
+
+
+<div class="viewcode-block" id="Abmc.imprime_listados"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.imprime_listados">[documentos]</a>    <span class="k">def</span> <span class="nf">imprime_listados</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ACTIVOS--------------------------&quot;</span><span class="p">)</span>
+        <span class="n">activos</span> <span class="o">=</span> <span class="n">Altas</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Altas</span><span class="o">.</span><span class="n">venc_cuota</span> <span class="o">&gt;=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">&amp;</span><span class="p">(</span><span class="n">Altas</span><span class="o">.</span><span class="n">venc_medico</span> <span class="o">&gt;=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()))</span>
+       
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">activos</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dni</span><span class="p">,</span><span class="s2">&quot;---&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">apellido</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PASIVOS--------------------------&quot;</span><span class="p">)</span>
+        <span class="n">pasivos</span> <span class="o">=</span> <span class="n">Altas</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Altas</span><span class="o">.</span><span class="n">venc_cuota</span> <span class="o">&lt;</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">|</span><span class="p">(</span><span class="n">Altas</span><span class="o">.</span><span class="n">venc_medico</span> <span class="o">&lt;</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()))</span>
+               
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pasivos</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dni</span><span class="p">,</span><span class="s2">&quot;---&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">apellido</span><span class="p">)</span>
+
+        <span class="k">return</span></div>
+
+    <span class="c1"># CALENDARIOS***********************************</span>
+    <span class="c1"># CAL CUOTA***********************</span>
+
+<div class="viewcode-block" id="Abmc.print_sel1"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.print_sel1">[documentos]</a>    <span class="k">def</span> <span class="nf">print_sel1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cal1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">cal1</span><span class="o">.</span><span class="n">selection_get</span><span class="p">())</span></div>
+
+    <span class="c1"># CAL MEDICO***********************</span>
+
+<div class="viewcode-block" id="Abmc.print_sel2"><a class="viewcode-back" href="../modelo.html#modelo.Abmc.print_sel2">[documentos]</a>    <span class="k">def</span> <span class="nf">print_sel2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cal2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">cal2</span><span class="o">.</span><span class="n">selection_get</span><span class="p">())</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022, Juan Carlos Gays.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

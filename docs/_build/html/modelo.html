@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modelo module &mdash; documentación de Gym_Fantasticos - 0.0.1</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="vista module" href="vista.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Gym_Fantasticos
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vista.html">vista module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">modelo module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gym_Fantasticos</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>modelo module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modelo.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modelo-module">
+<h1>modelo module<a class="headerlink" href="#modelo-module" title="Enlazar permanentemente con este título"></a></h1>
+<p><strong>AGREGAR LINEA</strong></p>
+<p>def agregar_linea(self,alta_apellido,alta_dni,cal1, cal2, tree)</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">alta_apellido</dt>
+<dd class="field-odd"><p>ingresa apellido</p>
+</dd>
+<dt class="field-even">alta_dni</dt>
+<dd class="field-even"><p>ingresa DNI</p>
+</dd>
+<dt class="field-odd">cal1</dt>
+<dd class="field-odd"><p>selecciona la fecha de venc cuota</p>
+</dd>
+<dt class="field-even">cal2</dt>
+<dd class="field-even"><p>selecciona la fecha de venc medico</p>
+</dd>
+<dt class="field-odd">tree</dt>
+<dd class="field-odd"><p>actualiza treeview</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>BORRAR LINEA</strong></p>
+<p>def borrar_linea(self,tree):</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">tree</dt>
+<dd class="field-odd"><p>borra la linea seleccionada en treeview</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>MODIFICAR ELEMENTO (CUOTA Y/O MEDICO)</strong></p>
+<p>def modificar_elemento(self,alta_apellido,alta_dni,cal1, cal2, tree):</p>
+<blockquote>
+<div><p>self.borrar_linea(tree)</p>
+<p>self.agregar_linea_regex(alta_apellido,alta_dni,cal1, cal2, tree)</p>
+<dl class="field-list simple">
+<dt class="field-odd">tree</dt>
+<dd class="field-odd"><p>selecciona item para modificar fecha de vencimiento medico o cuota</p>
+</dd>
+<dt class="field-even">cal1</dt>
+<dd class="field-even"><p>vencimiento medico para modificar - de ser preciso</p>
+</dd>
+<dt class="field-odd">cal2</dt>
+<dd class="field-odd"><p>vencimiento cuota a modificar - de ser preciso</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>CHECK SOCIOS</strong></p>
+<p>def check_socio_regex(self,buen_dia):</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">buen_dia</dt>
+<dd class="field-odd"><p>ingresa DNI para entrar al gimnasio, verifica si el socio esta en base, y si tiene cuota y medico al dia</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>LISTAR ACTIVOS vs PASIVOS</strong></p>
+<p>def imprime_listados(self):</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">activos</dt>
+<dd class="field-odd"><p>lista de miembros que tienen cuota y medico al dia</p>
+</dd>
+<dt class="field-even">pasivos</dt>
+<dd class="field-even"><p>lista de miembros que tienen cuota y/o medico vencidos</p>
+</dd>
+</dl>
+</div></blockquote>
+<span class="target" id="module-modelo"></span><dl class="py class">
+<dt class="sig sig-object py" id="modelo.Abmc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modelo.</span></span><span class="sig-name descname"><span class="pre">Abmc</span></span><a class="reference internal" href="_modules/modelo.html#Abmc"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.APELReg">
+<span class="sig-name descname"><span class="pre">APELReg</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'[A-Z][a-z,á,é,í,ó,ú]'</span></em><a class="headerlink" href="#modelo.Abmc.APELReg" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.DNIReg">
+<span class="sig-name descname"><span class="pre">DNIReg</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\\d{7,8}$'</span></em><a class="headerlink" href="#modelo.Abmc.DNIReg" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.activos">
+<span class="sig-name descname"><span class="pre">activos</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#modelo.Abmc.activos" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.actualizar_treeview">
+<span class="sig-name descname"><span class="pre">actualizar_treeview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mitreview</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.actualizar_treeview"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.actualizar_treeview" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.agregar_linea">
+<span class="sig-name descname"><span class="pre">agregar_linea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alta_apellido</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alta_dni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.agregar_linea"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.agregar_linea" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.agregar_linea_regex">
+<span class="sig-name descname"><span class="pre">agregar_linea_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alta_apellido</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alta_dni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.agregar_linea_regex"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.agregar_linea_regex" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.borrar">
+<span class="sig-name descname"><span class="pre">borrar</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modelo.Abmc.borrar" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.borrar_linea">
+<span class="sig-name descname"><span class="pre">borrar_linea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.borrar_linea"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.borrar_linea" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.check_socio">
+<span class="sig-name descname"><span class="pre">check_socio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buen_dia</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.check_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.check_socio" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.check_socio_regex">
+<span class="sig-name descname"><span class="pre">check_socio_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buen_dia</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.check_socio_regex"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.check_socio_regex" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.con">
+<span class="sig-name descname"><span class="pre">con</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modelo.Abmc.con" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.contador">
+<span class="sig-name descname"><span class="pre">contador</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modelo.Abmc.contador" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.imprime_listados">
+<span class="sig-name descname"><span class="pre">imprime_listados</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.imprime_listados"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.imprime_listados" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.ingreso">
+<span class="sig-name descname"><span class="pre">ingreso</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#modelo.Abmc.ingreso" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.modificar_elemento">
+<span class="sig-name descname"><span class="pre">modificar_elemento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alta_apellido</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alta_dni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.modificar_elemento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.modificar_elemento" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.pasivos">
+<span class="sig-name descname"><span class="pre">pasivos</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#modelo.Abmc.pasivos" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.print_sel1">
+<span class="sig-name descname"><span class="pre">print_sel1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cal1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.print_sel1"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.print_sel1" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.print_sel2">
+<span class="sig-name descname"><span class="pre">print_sel2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cal2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.print_sel2"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.print_sel2" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.seleccionar_elemento">
+<span class="sig-name descname"><span class="pre">seleccionar_elemento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">treview</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.seleccionar_elemento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.seleccionar_elemento" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.tree">
+<span class="sig-name descname"><span class="pre">tree</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#modelo.Abmc.tree" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.useRegexApellido">
+<span class="sig-name descname"><span class="pre">useRegexApellido</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.useRegexApellido"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.useRegexApellido" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modelo.Abmc.useRegexDni">
+<span class="sig-name descname"><span class="pre">useRegexDni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Abmc.useRegexDni"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Abmc.useRegexDni" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Abmc.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modelo.Abmc.x" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modelo.Altas">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modelo.</span></span><span class="sig-name descname"><span class="pre">Altas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#Altas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.Altas" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#modelo.BaseModel" title="modelo.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">modelo.BaseModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Altas.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#modelo.Altas.DoesNotExist" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">modelo.AltasDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Altas.apellido">
+<span class="sig-name descname"><span class="pre">apellido</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Altas.apellido&gt;</span></em><a class="headerlink" href="#modelo.Altas.apellido" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Altas.dni">
+<span class="sig-name descname"><span class="pre">dni</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Altas.dni&gt;</span></em><a class="headerlink" href="#modelo.Altas.dni" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Altas.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">Altas.id&gt;</span></em><a class="headerlink" href="#modelo.Altas.id" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Altas.venc_cuota">
+<span class="sig-name descname"><span class="pre">venc_cuota</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DateField:</span> <span class="pre">Altas.venc_cuota&gt;</span></em><a class="headerlink" href="#modelo.Altas.venc_cuota" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.Altas.venc_medico">
+<span class="sig-name descname"><span class="pre">venc_medico</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DateField:</span> <span class="pre">Altas.venc_medico&gt;</span></em><a class="headerlink" href="#modelo.Altas.venc_medico" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modelo.BaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modelo.</span></span><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modelo.html#BaseModel"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#modelo.BaseModel" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">peewee.Model</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.BaseModel.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#modelo.BaseModel.DoesNotExist" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">modelo.BaseModelDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modelo.BaseModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">BaseModel.id&gt;</span></em><a class="headerlink" href="#modelo.BaseModel.id" title="Enlazar permanentemente con esta definición"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="vista.html" class="btn btn-neutral float-left" title="vista module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022, Juan Carlos Gays.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
